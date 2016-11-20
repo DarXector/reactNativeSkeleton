@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Drawer from 'react-native-drawer';
 import {Actions, DefaultRenderer} from 'react-native-router-flux';
 
-class MyDrawer extends Component
+class MainDrawer extends Component
 {
     render()
     {
@@ -31,4 +31,4 @@ class MyDrawer extends Component
 }
 
 
-export default MyDrawer;
+export default MainDrawer;

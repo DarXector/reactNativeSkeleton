@@ -1,7 +1,7 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 
-import { MyDrawer } from './components/common/';
+//import { MainDrawer } from './components/common/';
 
 import LoginForm from './components/auth/LoginForm';
 import AlbumList from './components/album/AlbumList';

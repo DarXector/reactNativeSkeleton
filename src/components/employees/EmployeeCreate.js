@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
 import { CardSection, Card, Input, Button } from '../common/'
 import { connect } from 'react-redux';
 
-import { employeeUpdate } from '../../actions/'
+import { employeeUpdate, employeeCreate } from '../../actions/'
 
 class EmployeeCreate extends Component
 {
+    onButtonPress()
+    {
+        const {name, phone, shift } = this.props;
+
+        this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+    }
+
     render()
     {
         return (
@@ -27,10 +34,12 @@ class EmployeeCreate extends Component
                     />
                 </CardSection>
 
-                <CardSection>
-                    <Picker
-                        selectedValue={ this.props.shift }
-                        onValueChange={ value => this.props.employeeUpdate({ prop: 'shift', value }) }>
+                <CardSection style ={ { flexDirection: 'column' } }>
+                    <Text style={ styles.pickerLabelStyle }>Shift:</Text>
+                    <Picker style={ { flex: 1 } }
+                            selectedValue={ this.props.shift }
+                            onValueChange={ value => this.props.employeeUpdate({ prop: 'shift', value }) }>
+
                         <Picker.Item label="Monday"     value="Monday" />
                         <Picker.Item label="Tuesday"    value="Tuesday" />
                         <Picker.Item label="Wednesday"  value="Wednesday" />
@@ -42,12 +51,21 @@ class EmployeeCreate extends Component
                 </CardSection>
 
                 <CardSection>
-                    <Button>Create</Button>
+                    <Button onPress={ this.onButtonPress.bind(this) }>Create</Button>
                 </CardSection>
             </Card>
         )
     }
 }
+
+const styles =
+{
+    pickerLabelStyle:
+    {
+        fontSize: 18,
+        paddingLeft :20
+    }
+};
 
 const mapStateToProps = (state) =>
 {
@@ -55,4 +73,4 @@ const mapStateToProps = (state) =>
     return { name, phone, shift }
 };
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
+export default connect(mapStateToProps, { employeeUpdate, employeeCreate })(EmployeeCreate);
