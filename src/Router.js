@@ -8,6 +8,7 @@ import AlbumList from './components/album/AlbumList';
 import LibraryList from './components/techstack/LibraryList';
 import EmployeeList from './components/employees/EmployeeList';
 import EmployeeCreate from './components/employees/EmployeeCreate';
+import EmployeeEdit from './components/employees/EmployeeEdit';
 
 
 const RouterComponent = () =>
@@ -25,6 +26,7 @@ const RouterComponent = () =>
                     rightTitle="Add"
                     onRight={ () => Actions.employeeCreate() }/>
                 <Scene key="employeeCreate" component={ EmployeeCreate } title="Create Employee" />
+                <Scene key="employeeEdit" component={ EmployeeEdit } title="Edit Employee" />
                 <Scene key="albums" component={ AlbumList } title="Albums" />
                 <Scene key="techStack" component={ LibraryList } title="Tech Stack" />
             </Scene>

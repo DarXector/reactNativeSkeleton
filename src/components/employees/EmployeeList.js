@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import EmployeeListItem from './EmployeeListItem'
 
-import { emplyeesFetch } from '../../actions/'
+import { employeesFetch } from '../../actions/'
 
 class EmployeeList extends Component
 {
@@ -31,7 +31,7 @@ class EmployeeList extends Component
         this.dataSource = ds.cloneWithRows(employees);
     }
 
-    renderRow()
+    renderRow(employee)
     {
         return <EmployeeListItem employee={ employee } />;
     }
@@ -56,4 +56,4 @@ const mapStateToProps = (state) =>
     return { employees };
 };
 
-export default connect(mapStateToProps, { emplyeesFetch })(EmployeeList);
+export default connect(mapStateToProps, { employeesFetch })(EmployeeList);
